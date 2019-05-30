@@ -1,0 +1,1 @@
+com.linkprice.lpmat.BuildConfig

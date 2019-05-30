@@ -1,0 +1,12 @@
+# view AndroidManifest.xml #generated:47
+-keep class com.linkprice.lpmat.InstallReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:21
+-keep class com.linkprice.lpmat.MainActivity { <init>(...); }
+
+# onClick res/layout/activity_main.xml #generated:46
+-keepclassmembers class * { *** purchase(...); }
+
+# onClick res/layout/activity_main.xml #generated:39
+-keepclassmembers class * { *** referrerView(...); }
+
