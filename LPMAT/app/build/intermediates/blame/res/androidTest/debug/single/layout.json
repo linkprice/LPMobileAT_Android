@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/oiyoup/linkprice/AndroidStudioProjects/LPMAT/app/build/intermediates/res/merged/androidTest/debug/layout/activity_main.xml",
+        "source": "/Users/oiyoup/linkprice/AndroidStudioProjects/LPMAT/app/build/intermediates/bundles/debug/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/oiyoup/linkprice/AndroidStudioProjects/app_interlock/app/build/intermediates/res/merged/androidTest/debug/layout/activity_main.xml",
+        "source": "/Users/oiyoup/linkprice/AndroidStudioProjects/app_interlock/app/build/intermediates/bundles/debug/res/layout/activity_main.xml"
+    }
+]
