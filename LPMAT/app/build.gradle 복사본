@@ -1,0 +1,87 @@
+//apply plugin: 'com.android.application'
+//
+//android {
+//    compileSdkVersion 22
+//    buildToolsVersion "23.0.1"
+//
+//    defaultConfig {
+//        applicationId "com.LPMobileAT.lpmat"
+//        minSdkVersion 11
+//        targetSdkVersion 22
+//    }
+//
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+//        }
+//    }
+//}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 22
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:22.2.1'
+}
+
+//task androidExportDeleteOldJar(type: Delete) {
+////    delete 'build/release/com.LPMobileAT.lpmat-0.1.1.jar'
+////    delete fileTree(dir: "build/release/", exclude: "dont_delete.txt")
+//    delete fileTree(dir: "build/export/")
+//}
+//
+//task androidExportJar(type: Copy) {
+//
+//    from('build/intermediates/bundles/release/')
+//    into('build/export/')
+//    include('classes.jar')
+//    rename('classes.jar', 'com.linkprice.lpmat-0.1.0.jar')
+//}
+//
+//androidExportJar.dependsOn(androidExportDeleteOldJar, build)
+
+task androidReleaseDeleteOldJar(type: Delete) {
+//    delete 'build/release/com.LPMobileAT.lpmat-0.1.1.jar'
+//    delete fileTree(dir: "build/release/", exclude: "dont_delete.txt")
+    delete "build/libs/com.linkprice.lpmat-1.0.0.jar"
+}
+
+// http://stackoverflow.com/questions/28805607/exclude-buildconfig-class-and-r-class-from-android-library-jar-in-gradle
+// app/build/libs/com.LPMobileAT.lpmat-0.1.0.jar
+task androidReleaseJar(type: Jar) {
+
+    from "build/intermediates/classes/release/"
+
+    archiveName 'com.linkprice.lpmat-1.0.0.jar'
+
+    exclude '**/InstallReceiver.class'
+    exclude '**/InstallReceiver2.class'
+    exclude '**/MainActivity.class'
+    exclude '**/MainActivity$*.class'
+    exclude '**/BuildConfig.class'
+    exclude '**/R.class'
+    exclude '**/R$*.class'
+}
+
+androidReleaseJar.dependsOn(androidReleaseDeleteOldJar, assembleRelease)
