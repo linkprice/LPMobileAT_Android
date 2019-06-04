@@ -1,0 +1,44 @@
+# To enable ProGuard in your project, edit project.properties
+# to define the proguard.config property as described in that file.
+#
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in ${sdk.dir}/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the ProGuard
+# include property in project.properties.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# Add any project specific keep options here:
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+-keepattributes *Annotation*
+-keepattributes Signature
+-keepattributes InnerClasses
+-keepattributes EnclosingMethod
+
+# Also keep - Enumerations. Keep the special static methods that are required in
+# enumeration classes.
+-keepclassmembers enum  * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# public class 와 protected class 의 경우 를 난독화 하지 않는다.
+# public class 를 난독화 할경우 메소드 호출중 문제가 될수 있음....
+#-keep public class * { public protected *; }
+
+# lpmobilead
+-keep class com.linkprice.lpmat.LpMobileAT { public protected *; }
+-keep class com.linkprice.lpmat.LpResponse { public protected *; }
+#-dontwarn com.linkprice.lpmat.**
+
+# android.support.v4를 사용하고 있다면
+#-dontwarn android.support.v4.**

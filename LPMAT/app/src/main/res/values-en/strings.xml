@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LinkPrice App Setup Sample</string>
+    <string name="referrer_lpinfo">View Referrer/Tag Value</string>
+    <string name="purchase">purchase</string>
+</resources>
