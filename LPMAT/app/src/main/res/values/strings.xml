@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LinkPrice 앱 셋업 예제</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_intent">IntentActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="referrer_lpinfo">Referrer/Tag Value 보기</string>
+    <string name="purchase">실적 전송</string>
+
+</resources>
