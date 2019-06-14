@@ -49,61 +49,6 @@ public class LpNetwork {
         return false;
     }
 
-//    public Boolean call(String purchaseUrl, final LpResponse lpResponse) {
-//        releaseAsyncTask();
-//
-//        mAsyncTask = new AsyncTask<String, Void, String>() {
-//            @Override
-//            protected String doInBackground(String... params) {
-//                String result = "";
-//                String uri = params[0];
-//
-//                Log.d(LpMobileAT.LOG_TAG, "call url - " + uri);
-//
-//                try {
-//                    URL url = new URL(uri);
-//                    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-//
-//                    InputStreamReader isr = openConnectionCheckRedirects(conn, lpResponse);
-//                    BufferedReader responseReader = new BufferedReader(isr);
-//
-//                    String responseLine;
-//                    StringBuffer responseStringBuffer = new StringBuffer();
-//
-//                    while (null != (responseLine = responseReader.readLine())) {
-//                        responseStringBuffer.append(responseLine);
-//                    }
-//                    isr.close();
-//
-//                    result = responseStringBuffer.toString();
-//                } catch (Exception e) {
-//                    result = "fail";
-////                    e.printStackTrace();
-//                }
-//
-//                Log.d(LpMobileAT.LOG_TAG, "call response - " + result);
-//
-//                return result;
-//            }
-//
-//            @Override
-//            protected void onPostExecute(String result) {
-//                super.onPostExecute(result);
-//
-//                if (null != lpResponse) {
-//
-//                    if (result.equals("fail")) {
-//                        lpResponse.fail("postback fail");
-//                    } else {
-//                        lpResponse.success();
-//                    }
-//                }
-//            }
-//        }.execute(purchaseUrl);
-//
-//        return true;
-//    }
-
     // call V4 lppurchase
     public Boolean call(final JSONObject purchase, final LpResponse lpResponse) {
         releaseAsyncTask();
