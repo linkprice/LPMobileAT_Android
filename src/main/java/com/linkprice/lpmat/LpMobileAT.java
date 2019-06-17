@@ -6,6 +6,9 @@ import android.content.Intent;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -112,6 +115,28 @@ public class LpMobileAT {
     // get Target_url(deeplink)
     public String getDl() {
         return mLpTagValue.getDl();
+    }
+
+    public String getQuery(String url, String key) {
+        Map<String, String> query = null;
+        URL tempUrl = null;
+
+        try {
+            tempUrl = new URL(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            query = mLpTagValue.getQuery(tempUrl);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        query.get(key);
+
+        return query.get(key);
     }
 
 
