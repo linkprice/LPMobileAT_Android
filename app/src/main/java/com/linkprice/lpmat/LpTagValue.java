@@ -44,7 +44,8 @@ public class LpTagValue {
                 switch (responseCode) {
                     case InstallReferrerClient.InstallReferrerResponse.OK:
                         // Connection established.
-                        setTagValueReceiver(mInstallReferrerClient);
+                        // 구글 플레이 앱과 연결이 성공했을 때, 리퍼러 데이터를 얻기 위한 작업을 수행합니다.
+                        setTagValueReferrer(mInstallReferrerClient);
                         break;
                     case InstallReferrerClient.InstallReferrerResponse.FEATURE_NOT_SUPPORTED:
                         // API not available on the current Play Store app.
@@ -64,7 +65,7 @@ public class LpTagValue {
     }
 
     // receiver receive tag_value
-    public Boolean setTagValueReceiver(InstallReferrerClient referrerClient) {
+    private Boolean setTagValueReferrer(InstallReferrerClient referrerClient) {
         String referrer = null;
 
         try {
@@ -72,13 +73,17 @@ public class LpTagValue {
             referrer = response.getInstallReferrer();
         } catch (RemoteException e) {
             e.printStackTrace();
+            return false;
         }
 
         SharedPreferences.Editor prefEditor = mSharedPreferences.edit();
 
+        // install_referrer check 처리
+        setReferrerCheck(prefEditor);
+        prefEditor.apply();
+
         if (null == referrer) {
             Log.d(LpMobileAT.LOG_TAG, "referrer null");
-            setReferrerCheck(prefEditor);
             return false;
         }
 
@@ -133,6 +138,9 @@ public class LpTagValue {
                 setReferrer(prefEditor, data.toString());
                 // 등록 시간
                 setCreateTime(prefEditor);
+
+                // install_referrer check 처리
+                setReferrerCheck(prefEditor);
 
                 prefEditor.apply();
 
